@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Explore student internship opportunities across technology and creative domains.">
+  <title>InternBoard — Find your next opportunity</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <nav class="nav wrap" aria-label="Main navigation">
+      <a class="brand" href="#" aria-label="InternBoard home"><span class="brand-mark">i</span> intern<span>board</span></a>
+      <div class="nav-links">
+        <a href="#opportunities">Explore</a>
+        <a href="#about">About</a>
+      </div>
+      <a class="nav-cta" href="#opportunities">Find an internship <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="eyebrow-dot"></span> YOUR NEXT CHAPTER STARTS HERE</p>
+          <h1>Small steps.<br><span>Big beginnings.</span></h1>
+          <p class="hero-text">Find an internship that helps you turn what you’re learning into what you can do. Explore opportunities made for curious minds.</p>
+          <a class="hero-link" href="#opportunities">Explore opportunities <span aria-hidden="true">↓</span></a>
+        </div>
+        <div class="hero-art" aria-label="Illustration of a person discovering an opportunity" role="img">
+          <div class="art-orbit orbit-one"></div><div class="art-orbit orbit-two"></div>
+          <div class="art-spark spark-one">✳</div><div class="art-spark spark-two">✦</div>
+          <div class="art-card">
+            <div class="art-card-top"><span>YOUR NEXT MOVE</span><span class="art-live"></span></div>
+            <div class="art-icon">↗</div>
+            <div class="art-card-title">Make room<br>for possibility.</div>
+            <div class="art-lines"><i></i><i></i><i></i></div>
+            <div class="art-pill">Opportunity awaits</div>
+          </div>
+          <div class="floating-note note-top"><span>✦</span> Learn by doing</div>
+          <div class="floating-note note-bottom"><span>✓</span> Start somewhere</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats wrap" aria-label="Board highlights">
+      <div><strong id="total-count">05</strong><span>open opportunities</span></div>
+      <div><strong>04</strong><span>career domains</span></div>
+      <div><strong>01</strong><span>next step: yours</span></div>
+    </section>
+
+    <section class="listing-section" id="opportunities">
+      <div class="wrap">
+        <div class="section-heading">
+          <div><p class="eyebrow">FIND YOUR FIT</p><h2>Explore opportunities<span>.</span></h2></div>
+          <p class="section-note">A good opportunity is a great place to start. Find one that feels right.</p>
+        </div>
+
+        <div class="filter-panel">
+          <div class="search-field">
+            <label for="search">Search internships</label>
+            <div class="input-wrap"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Try “JavaScript” or “Frontend”" autocomplete="off"><kbd>/</kbd></div>
+          </div>
+          <div class="select-field">
+            <label for="domain-filter">Domain</label>
+            <select id="domain-filter"><option value="">All domains</option></select>
+          </div>
+          <div class="select-field">
+            <label for="mode-filter">Work mode</label>
+            <select id="mode-filter">
+              <option value="">Any mode</option><option>Remote</option><option>Hybrid</option><option>On-site</option>
+            </select>
+          </div>
+          <button class="clear-btn" id="clear-filters" type="button">Clear filters</button>
+        </div>
+
+        <div class="results-row">
+          <p id="results-count" aria-live="polite">Showing opportunities…</p>
+          <span class="results-hint">Fictional listings for practice</span>
+        </div>
+        <div id="status-area" class="status-area" role="status" aria-live="polite"></div>
+        <div id="internship-grid" class="internship-grid" aria-busy="true"></div>
+      </div>
+    </section>
+
+    <section class="bottom-cta" id="about">
+      <div class="wrap cta-inner">
+        <div><p class="eyebrow">EVERY JOURNEY BEGINS SOMEWHERE</p><h2>You don’t need it all figured out.<br><span>Just take the first step.</span></h2></div>
+        <a href="#opportunities" class="cta-button">Browse opportunities <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <a class="brand footer-brand" href="#"><span class="brand-mark">i</span> intern<span>board</span></a>
+      <p>Made for learners, built for beginnings.</p>
+      <small>© 2026 InternBoard · Student project</small>
+    </div>
+  </footer>
+
+  <dialog id="details-dialog" class="dialog" aria-labelledby="dialog-title">
+    <div class="dialog-head"><span class="dialog-label">OPPORTUNITY DETAILS</span><button class="icon-button" type="button" data-close aria-label="Close details">×</button></div>
+    <div id="dialog-content"></div>
+  </dialog>
+
+  <dialog id="apply-dialog" class="dialog apply-dialog" aria-labelledby="apply-title">
+    <div class="dialog-head"><span class="dialog-label">TAKE THE NEXT STEP</span><button class="icon-button" type="button" data-close aria-label="Close application form">×</button></div>
+    <h2 id="apply-title">Apply for this opportunity<span>.</span></h2>
+    <p class="form-intro" id="apply-role"></p>
+    <form id="application-form" novalidate>
+      <input type="hidden" id="application-id">
+      <div class="form-field"><label for="applicant-name">Your name</label><input id="applicant-name" name="name" autocomplete="name" required minlength="2" placeholder="e.g. Alex Kumar"></div>
+      <div class="form-field"><label for="applicant-email">Email address</label><input id="applicant-email" name="email" type="email" autocomplete="email" required placeholder="you@example.com"></div>
+      <div class="form-field"><label for="portfolio-url">Portfolio or LinkedIn URL <span>(optional)</span></label><input id="portfolio-url" name="portfolio" type="url" placeholder="https://example.com"></div>
+      <p class="form-message" id="form-message" role="alert"></p>
+      <button class="primary-button full-button" type="submit">Send application <span aria-hidden="true">↗</span></button>
+      <p class="demo-note">Demo form: your submission is saved only in this browser.</p>
+    </form>
+  </dialog>
+</body>
+</html>
